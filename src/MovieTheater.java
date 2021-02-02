@@ -100,8 +100,11 @@ public class MovieTheater {
     public static void main (String[] args) {
         initializeValues ();
 
-        String input_file_path = "/Users/jhab1/IdeaProjects/movietheater_walmart/input.txt";
-        String output_file_path = "/Users/jhab1/IdeaProjects/movietheater_walmart/output.txt";
+        //String input_file_path = "/Users/jhab1/IdeaProjects/movietheater_walmart/input.txt";
+        //String output_file_path = "/Users/jhab1/IdeaProjects/movietheater_walmart/output.txt";
+        String input_file_path = args[0];
+        String output_file_path = args[1];
+
 
         //reading from input file
         BufferedReader reader;
@@ -119,6 +122,10 @@ public class MovieTheater {
                 String newAssignment = assignSeats(request[0], Integer.parseInt(request[1]));
                 newAssignment = newAssignment.substring(0, newAssignment.length() - 1); //getting rid of last comma
                 total_output += newAssignment + "\n";
+
+                if (newAssignment.equals("No more seats")) {
+                    break;
+                }
                 line = reader.readLine();
             }
 
